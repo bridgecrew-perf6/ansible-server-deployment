@@ -1,0 +1,29 @@
+ -
+    name: deploy static html site
+    hosts: all
+    become: true
+    tasks:
+      - name: create webadmin user
+        user: >
+          name=webadmin
+          state=present
+
+      - name: Install Git
+        package: >
+          name=git
+
+
+      - name: Install Nginx
+        package: >
+          name=nginx
+
+      - name: start nginx
+        service: >
+          name=nginx
+          state=started
+          enabled=true
+
+      - name: deploy app
+        git: >
+          repo=https://github.com/schoolofdevops/html-sample-app.git
+          dest=/usr/share/nginx/html/app
