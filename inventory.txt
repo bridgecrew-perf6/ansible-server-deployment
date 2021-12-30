@@ -1,0 +1,5 @@
+[all]
+3.111.31.166
+13.233.23.127
+
+#Target Public ip's which was used
